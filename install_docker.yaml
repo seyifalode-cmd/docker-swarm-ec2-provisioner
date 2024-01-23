@@ -1,0 +1,48 @@
+
+- name: Java Build VM
+  hosts: localhost
+  remote_user: ec2-user
+  become: true
+
+  tasks:
+
+    - name: install dependencies
+      yum:
+        name: "{{ package }} "
+        state: present
+      vars:
+        package:
+        - git
+        - tree
+    - block:    
+      - name: Install Docker
+        package:
+          name: docker
+          state: present
+
+      - name: Ensure group "docker" exists
+        ansible.builtin.group:
+          name: docker
+          state: present
+
+      - name: Add ec2-user user to docker group
+        ansible.builtin.user:
+          name: ec2-user
+          group: docker
+          append: yes
+
+      - name: Start Docker service
+        service:
+          name: docker
+          state: started
+          enabled: true
+
+      - name: Change permissions of docker.sock
+        file:
+          path: "/var/run/docker.sock"
+          state: file
+          mode: "777"
+
+
+
+
