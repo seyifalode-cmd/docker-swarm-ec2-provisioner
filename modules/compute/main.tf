@@ -25,7 +25,7 @@ resource "aws_instance" "docker_swarm" {
   # Creates 3 identical aws ec2 instances
   count = 3
 
-  instance_type               = "t2.micro"
+  instance_type               = "t3.micro"
   ami                         = data.aws_ssm_parameter.webserver-ami.value
   tags = {
     Name = count.index == 0 ?  "swarm_manager_${count.index}" : "swarm_worker_${count.index}"
