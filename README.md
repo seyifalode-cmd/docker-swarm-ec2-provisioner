@@ -1,4 +1,8 @@
-**docker-swarm-ec2-provisioner** — Terraform and Ansible pipeline that provisions a three-node Docker Swarm cluster on AWS EC2, with all Swarm networking ports pre-configured and Docker installed on every node automatically.
+# Docker Swarm EC2 Provisioner
+
+Oluwaseyi Michael Falode | Cloud & DevOps Engineering | Toronto, ON
+
+Terraform and Ansible pipeline that provisions a three-node Docker Swarm cluster on AWS EC2, with all Swarm networking ports pre-configured and Docker installed on every node automatically.
 
 ---
 
